@@ -1,0 +1,27 @@
+server.port: 9191
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: department-service
+          uri: lb://department-service
+          predicates:
+            - Path=/departments/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: department-ms
+#                fallbackuri: forward:/users-fallback-endpoint
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: user-ms
+#                fallbackuri: forward:/departments-fallback-endpoint
+  config.import: configserver:http://localhost:9999

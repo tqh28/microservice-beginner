@@ -1,0 +1,11 @@
+server.port: 9999
+
+spring:
+  application:
+    name: centralize-configuration
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tqh28/centralize-configuration
+          clone-on-start: true

@@ -1,0 +1,10 @@
+server.port: 9002
+
+service:
+  department:
+    uri: 'http://localhost:9001'
+
+spring:
+  application:
+    name: user-service
+  config.import: configserver:http://localhost:9999
